@@ -1,0 +1,117 @@
+a {
+    text-decoration: none;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+
+/* Tushar */
+
+.head-for-fac {
+    text-transform: uppercase;
+    margin: 0px;
+    font-size: medium;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    padding: 0px 0px 2px 0px;
+    font-weight: bold;
+}
+
+.fac-img-pos {
+    width: 100%;
+    float: left;
+    text-align: center;
+    position: relative;
+    min-height: 240px;
+}
+
+.fac-img-pos2 {
+    border-radius: 8px;
+    max-width: 75%;
+    height: auto;
+}
+
+.pad-txt {
+    padding: 5px 5px 5px 5px;
+}
+
+.last-sec {
+    padding-bottom: 10px;
+}
+
+.link {
+    text-decoration: none;
+    color: #212529;
+}
+
+.link-head {
+    text-decoration: none;
+    color: #ffc300;
+}
+
+.box-head {
+    border-radius: 0.3rem;
+    background-color: rgb(218, 165, 32);
+}
+
+.box-head-hr-ne {
+    padding-left: 2rem;
+    padding-right: 2rem;
+    color: rgb(218, 165, 32);
+    background-color: #000814;
+}
+
+.box-cont {
+    text-decoration: none;
+    color: white;
+}
+
+hr.hr-ne {
+    border-top: 0.2rem solid white;
+}
+
+.home_news {
+    color: white;
+}
+
+h1.bar-top {
+    background-color: #fca311;
+}
+
+.border-clr {
+    border-color: #fca311;
+}
+
+sideT {
+    /* display: inline-flex; */
+    font-weight: bold;
+    font-size: large;
+    line-height: 1.4rem;
+    color: white;
+    padding: 2rem;
+    margin-top: -10px;
+}
+
+.color-any {
+    color: rgb(218, 165, 32);
+}
+
+
+/* blur section */
+
+.blur {
+    background-image: url(/imgs/blurBg.jpg);
+}
+
+
+/*
+primary dark    :000814
+primary         :001D3D
+primary light   :003566
+secondary light :FFD60A
+secondary       :FFC300
+secondary dark  :fca311
+*/
