@@ -106,6 +106,13 @@ sideT {
     background-image: url(/imgs/blurBg.jpg);
 }
 
+.motivationalQuote {
+    font-family: 'Tangerine', serif;
+    font-size: 6rem;
+    text-shadow: .4rem .4rem .4rem #aaa;
+    text-align: center;
+}
+
 
 /*
 primary dark    :000814
