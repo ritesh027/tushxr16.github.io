@@ -7,9 +7,38 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="icon" type="image/png" href="/title-logo.png">
-    <link rel="stylesheet" href="/bs.css">
 
     <style>
+        .btn {
+            display: inline-block;
+            font-weight: 400;
+            line-height: 1.5;
+            text-align: center;
+            text-decoration: none;
+            vertical-align: middle;
+            cursor: pointer;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            user-select: none;
+            background-color: transparent;
+            border: 1px solid transparent;
+            padding: .375rem .75rem;
+            font-size: 1rem;
+            border-radius: .25rem;
+            transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out
+        }
+        
+        .btn-primary {
+            color: rgb(209, 223, 249);
+            border-color: #fff;
+        }
+        
+        .btn:hover {
+            background-color: rgb(64, 123, 231);
+            color: whitesmoke;
+            border-color: rgba(0, 0, 0, 0);
+        }
+        
         .bodyStyle {
             height: 95vh;
             background-position: center;
@@ -44,8 +73,8 @@
         </a>
     </h2>
     <a href="/Index/index.html">
-        <div class="btn btn-primary">Enter
-        </div>
+        <button class="btn btn-primary">Enter
+        </button>
     </a>
 </body>
 
