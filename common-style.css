@@ -113,6 +113,13 @@ sideT {
     text-align: center;
 }
 
+.goldBorder {
+    border: rgba(127, 127, 0, 1);
+    border-width: 1px;
+    border-style: solid;
+    border-radius: 5px;
+}
+
 
 /*
 primary dark    :000814
