@@ -120,6 +120,22 @@ sideT {
     border-radius: 5px;
 }
 
+normalGold {
+    color: #212529;
+}
+
+normalGold:hover {
+    color: #ffca2c;
+}
+
+goldBg {
+    color: #212529;
+}
+
+goldBg:hover {
+    color: #fff;
+}
+
 
 /*
 primary dark    :000814
