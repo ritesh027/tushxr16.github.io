@@ -7,14 +7,32 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="icon" type="image/png" href="/title-logo.png">
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="/common-style.css">
-    <link rel="stylesheet" href="/bs.css">
+    <link rel="stylesheet" href="../common-style.css">
+    <link rel="stylesheet" href="../bs.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Tangerine">
 
     <title>Chemical Engineering | IIT ROPAR</title>
 </head>
 
 <body>
+<?php 
+        require '../plugins/google-api-php-client-2.5.0/vendor/autoload.php';
+
+        $client = new \Google_Client();
+        $client->setApplicationName('GOOGLE SHEETS API');
+        $client->setScopes([\Google_Service_Sheets::SPREADSHEETS]);
+        $client->setAccessType('offline');
+        $client->setAuthConfig('../plugins/news-keys.json');
+        $service = new Google_Service_Sheets($client);
+        $spreadsheetId = "1lkSLHpRkS4quIJY50d4bz1Zko1WDChBhm0_T9KuoJ1c";
+
+        $range = 'news!A3:E100';
+        $range1= 'events!A3:E100';
+
+        $response = $service->spreadsheets_values->get($spreadsheetId, $range)->getValues();  
+        $response_event = $service->spreadsheets_values->get($spreadsheetId, $range1)->getValues(); 
+
+    ?>
     <!-- Header Starts -->
     <div class="d-flex flex-column sticky-top bg-white">
         <div>
@@ -207,113 +225,55 @@
 
     <div class="motivationalQuote container my-5 py-5">Big Journerys begin with, Small Steps.</div>
 
-    <!-- News/Events Section -->
-    <section class="quicklik-news-section" style="padding: 2rem;">
-        <div class="container">
-            <div class="row justify-content-evenly">
-                <div class="col-lg-4 my-3 py-3">
+      <!-- News/Events Section -->
+   <section class="quicklik-news-section" style="padding: 2rem;">
+        <div class="container">           
+             <div class="row justify-content-evenly"> 
+             <div class="col-lg-4">
                     <!--NEWS-->
                     <div class="news-box" style="background-color: #000814;">
                         <h2 class="box-head-hr-ne py-3">NEWS</h2>
+                        
                         <hr class='hr-ne'>
-                        <marquee direction="down" style="height:400px;" id="ir" onMouseOver="document.getElementById('ir').stop();" onMouseOut="document.getElementById('ir').start();">
+                        <marquee direction="down" style="height:336px;" id="ir" onMouseOver="document.getElementById('ir').stop();" onMouseOut="document.getElementById('ir').start();">
                             <ul class="home_news">
-                                <li>
-                                    <h6><small class="box-cont">December 04, 2020</small>
-                                        <a href="https://www.iitrpr.ac.in/physics/news/allDetails/31/news" class="box-cont">"The Best PhD
-                                            Thesis Award" received by Dr. Shahariar Sarkar in the 9th Convocat</a>
-                                    </h6>
-                                </li>
-                                <li>
-                                    <h6><small class="box-cont">October 06, 2020</small>
-                                        <a href="https://www.iitrpr.ac.in/physics/news/allDetails/25/news" class="box-cont">DST-FIST
-                                            Grant</a>
-                                    </h6>
-                                </li>
-                                <li>
-                                    <h6><small class="box-cont">June 22, 2021</small>
-                                        <a href="https://www.iitrpr.ac.in/physics/news/allDetails/38/news" class="box-cont">PhD admission
-                                            - 1st Semester AY 2021-22</a>
-                                    </h6>
-                                </li>
-                                <li>
-                                    <h6>
-                                        <small class="box-cont" ">November 07, 2020</small>
-                                        <a href="https://www.iitrpr.ac.in/physics/news/allDetails/28/news " class="box-cont ">Congratulations
-                                            to Dr. Rajesh V. Nair, for receiving the highly competitive Swar</a>
-                                    </h6>
-                                </li>
-                                <li>
-                                    <h6><small class="box-cont ">December 04, 2020</small>
-                                        <a href="https://www.iitrpr.ac.in/physics/news/allDetails/31/news " class="box-cont ">"The Best PhD Thesis Award " received by Dr. Shahariar Sarkar in the 9th Convocat</a>
-                                    </h6>
-                                </li>
-                                <li>
-                                    <h6><small class="box-cont ">October 06, 2020</small>
-                                        <a href="https://www.iitrpr.ac.in/physics/news/allDetails/25/news " class="box-cont ">DST-FIST
-                                            Grant</a>
-                                    </h6>
-                                </li>
-                                <li>
-                                    <h6><small class="box-cont ">June 22, 2021</small>
-                                        <a href="https://www.iitrpr.ac.in/physics/news/allDetails/38/news " class="box-cont ">PhD admission
-                                            - 1st Semester AY 2021-22</a>
-                                    </h6>
-                                </li>
-                                <li>
-                                    <h6>
-                                        <small class="box-cont " ">November 07, 2020</small>
-                                        <a href="https://www.iitrpr.ac.in/physics/news/allDetails/28/news " class="box-cont ">Congratulations
-                                            to Dr. Rajesh V. Nair, for receiving the highly competitive Swar</a>
-                                    </h6>
-                                </li>
+                                <?php
+                                   for($i=0;$i<20;$i++)
+                                   {
+                                    if(isset($response[$i][0])&&isset($response[$i][1]))
+                                    {
+                                        echo '<li>';
+                                        echo '<h6><small class="box-cont">',$response[$i][1],'  ',$response[$i][0],', ',$response[$i][2],'</small>';
+                                        echo '<a href="#" class="box-cont"> ',$response[$i][3],'</a>';
+                                        echo '</h6>';
+                                        echo '</li>';
+                                    }                                     
+                                   }                               
+                                ?> 
                             </ul>
                         </marquee>
                     </div>
-                </div>
-                <div class="col-lg-4 my-3 py-3">
+                </div> -->
+                <div class="col-lg-4 "> 
                     <!--Events-->
-                    <div class="event-box " style="background-color: #000814; ">
-                        <h2 class="box-head-hr-ne py-3 ">EVENTS</h2>
+                    <div class="news-box" style="background-color: #000814;">
+                        <h2 class="box-head-hr-ne py-3">EVENTS</h2>
                         <hr class='hr-ne'>
-                        <marquee direction='down' style="height:400px; " id='ir2' onMouseOver="document.getElementById( 'ir2').stop(); " onMouseOut="document.getElementById( 'ir2').start(); ">
+                        <marquee direction='down' style="height:336px; " id='ir2' onMouseOver="document.getElementById( 'ir2').stop(); " onMouseOut="document.getElementById( 'ir2').start(); ">
                             <ul class="home_news ">
-                                <li>
-                                    <h6><small class="box-cont ">December 15, 2020</small>
-                                        <a href="https://www.iitrpr.ac.in/physics/uploads/IIT_Ropar_OSA_Student_chapter_Webinar_Series-1.pdf " target="_blank " class="box-cont ">ILLUMINE Webinar series conducted by OSA student chapter IIT
-                                        Ropar</a>
-                                    </h6>
-                                </li>
-                                <li>
-                                    <h6><small class="box-cont ">December 04, 2020</small>
-                                        <a href="https://youtu.be/rQ8IHscRxVg " target="_blank " class="box-cont ">9th Convocation- Indian
-                                        Institute of Technology, Ropar</a>
-                                    </h6>
-                                </li>
-                                <li>
-                                    <h6><small class="box-cont ">August 26, 2021</small>
-                                        <a href="https://www.iitrpr.ac.in/physics/news/allDetails/39/events " class="box-cont ">Workshop on
-                                        Nuclear Photonics and Research Opportunities at ELI-NP, September 09</a>
-                                    </h6>
-                                </li>
-                                <li>
-                                    <h6><small class="box-cont ">December 15, 2020</small>
-                                        <a href="https://www.iitrpr.ac.in/physics/uploads/IIT_Ropar_OSA_Student_chapter_Webinar_Series-1.pdf " target="_blank " class="box-cont ">ILLUMINE Webinar series conducted by OSA student chapter IIT
-                                        Ropar</a>
-                                    </h6>
-                                </li>
-                                <li>
-                                    <h6><small class="box-cont ">December 04, 2020</small>
-                                        <a href="https://youtu.be/rQ8IHscRxVg " target="_blank " class="box-cont ">9th Convocation- Indian
-                                        Institute of Technology, Ropar</a>
-                                    </h6>
-                                </li>
-                                <li>
-                                    <h6><small class="box-cont ">August 26, 2021</small>
-                                        <a href="https://www.iitrpr.ac.in/physics/news/allDetails/39/events " class="box-cont ">Workshop on
-                                        Nuclear Photonics and Research Opportunities at ELI-NP, September 09</a>
-                                    </h6>
-                                </li>
+                            <?php
+                                   for($i=0;$i<20;$i++)
+                                   {
+                                    if(isset($response_event[$i][0])&&isset($response_event[$i][1]))
+                                    {
+                                        echo '<li>';
+                                        echo '<h6><small class="box-cont">',$response_event[$i][1],'  ',$response_event[$i][0],', ',$response_event[$i][2],'</small>';
+                                        echo '<a href="#" class="box-cont"> ',$response_event[$i][3],'</a>';
+                                        echo '</h6>';
+                                        echo '</li>';
+                                    }                                     
+                                   }                               
+                                ?> 
                             </ul>
                         </marquee>
                     </div>
@@ -321,6 +281,7 @@
             </div>
         </div>
     </section>
+
 
 
     <!-- FOOTER STARTS -->
